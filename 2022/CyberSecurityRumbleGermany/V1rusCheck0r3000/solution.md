@@ -49,11 +49,21 @@ if (isset($_GET["source"])) {
     highlight_file(__FILE__);
 }
 ?>
+We can upload files to the application for it to inspect the file contents and check for viruses, and then it delets the file from the server.
 
 ```
 
 ## Solution
-We can upload files to the application for it to inspect the file contents and check for viruses. However, the application stores the file to the server first, then only checks the file and deletes it subsequently. Therefore, we have a race condition where we can try to request the file before it is deleted from the server.
+The application stores the file to the server first by
+```
+move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+```
+
+,then only calls hasVirus() function and deletes it subsequently by 
+```
+unlink($target_file);
+```
+Therefore, we have a race condition where we can try to request the file before it is deleted from the server.
 
 exploit.py
 ```
@@ -83,7 +93,6 @@ if (__name__ == "__main__"):
     ses = requests.Session()
     race(ses)
 ```
-Virus.php contains code to upload a persistent webshell to the server.
 
 virus.php
 ```
