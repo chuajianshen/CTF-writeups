@@ -97,7 +97,7 @@ Here I write a file called "race_exploit.php" as a simple web shell to execute c
 
 Going to the uploads directory /uploads/race_exploit.php presents us with the webshell
 
-![image1](./images/id.png)
+![images](../images/id.png)
 
 The steps are:
 1. Upload php file to write persistent webshell to server
