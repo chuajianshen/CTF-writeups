@@ -47,7 +47,7 @@ We can update the password of the admin user by utilising ON DUPLICATE KEY. If y
 
 ### Payload
 
-[!payload](../images/horror2.png)
+[!payload](../../HackTheBoo/images/horror2.png)
 
 MYSQL finds that an admin user exists and updates its password to the bcrypt hash of "123".
 
