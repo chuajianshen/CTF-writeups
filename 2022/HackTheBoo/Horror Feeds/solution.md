@@ -30,7 +30,7 @@ The user can inject mallicious data into the username field.
 By supplying 
 admin","fake_hash_value");-- -" as the username, we could insert an admin user with fake_hash_value as the password. However, a user of admin is already in the database.
 
-[!database](../images/horror1.png)
+![database](../images/horror1.png)
 
 The database also uses bcrypt to hash the passwords.
 ```
@@ -47,7 +47,7 @@ We can update the password of the admin user by utilising ON DUPLICATE KEY. If y
 
 ### Payload
 
-[!payload](../../HackTheBoo/images/horror2.png)
+![payload](../../HackTheBoo/images/horror2.png)
 
 MYSQL finds that an admin user exists and updates its password to the bcrypt hash of "123".
 
